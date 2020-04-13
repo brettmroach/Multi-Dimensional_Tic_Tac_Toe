@@ -1,0 +1,61 @@
+
+# First make the "play" program
+
+dir=~/Tic\ Tac\ Toe
+make -C "$dir"/TTTfiles play
+
+# Clean out directories and make programs
+
+/bin/rm -f "$dir"/Terminal_Execution/ttt_source.sh "$dir"/Terminal_Execution/write_txt_file
+g++ "$dir"/Terminal_Execution/write_txt_file.cpp -o "$dir"/Terminal_Execution/write_txt_file
+
+
+# ask for dimension of game
+D=0
+DIM=( 2 3 )
+pass=0
+while [ $pass -eq 0 ]
+do
+	echo "\n  Do you want to play 2-D or 3-D Tic Tac Toe?"
+	echo "  Enter [2 or 3]: \c"
+	read D
+	for d in ${DIM[*]}
+	do
+		if [ $D -eq $d ]
+		then
+			pass=1
+			break
+		fi
+	done
+done
+
+# ask for size of game
+size=0
+width=80
+response=N
+while [ "$response" != "Y" -a "$response" != "y" ]
+do
+	"$dir"/TTTfiles/play $D
+	read size
+	"$dir"/TTTfiles/play $D $size
+	read response
+done
+
+make -C "$dir"/TTTfiles clean
+
+if [ $D -eq 2 ]
+then
+	GAME="play_2D"
+elif [ $D -eq 3 ]
+then
+	GAME="play_3D"
+fi
+
+TEXT="\n # ttt_source.sh \n GAME=$GAME \n export GAME \n dir="$dir" \n export dir"
+TEXT="$TEXT \n size=$size \n export size"
+
+"$dir"/Terminal_Execution/write_txt_file "$dir"/Terminal_Execution/ttt_source.sh $TEXT
+/bin/rm -f "$dir"/Terminal_Execution/write_txt_file
+
+open "$dir/Terminal_Execution/Tic Tac Toe.terminal"
+
