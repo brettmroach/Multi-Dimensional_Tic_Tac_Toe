@@ -12,9 +12,7 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
     string filename = argv[1];
-    string line;
     int x=2;
-    bool finished = false;
     ofstream outfile;
     outfile.open(filename);
     while (argv[x]) {

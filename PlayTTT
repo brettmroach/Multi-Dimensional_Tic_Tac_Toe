@@ -1,13 +1,19 @@
 
 # First make the "play" program
 
-dir=~/Tic\ Tac\ Toe
+mkdir "$0"_dir
+cd "$0"_dir/..
+rmdir "$0"_dir
+dir="$PWD"
+
 make -C "$dir"/TTTfiles play
 
 # Clean out directories and make programs
 
-/bin/rm -f "$dir"/Terminal_Execution/ttt_source.sh "$dir"/Terminal_Execution/write_txt_file
+/bin/rm -f "$dir"/Terminal_Execution/ttt_source.sh "$dir"/Terminal_Execution/write_txt_file \
+	"$dir"/Terminal_Execution/write_term "$dir"/Terminal_Execution/TTT.terminal
 g++ "$dir"/Terminal_Execution/write_txt_file.cpp -o "$dir"/Terminal_Execution/write_txt_file
+g++ "$dir"/Terminal_Execution/write_term.cpp -o "$dir"/Terminal_Execution/write_term
 
 
 # ask for dimension of game
@@ -49,13 +55,21 @@ then
 elif [ $D -eq 3 ]
 then
 	GAME="play_3D"
+	w=`expr 7 + 4 \* $size \* $size`
+	if [ $w -gt $width ]
+	then
+		width=`expr $w + 2`
 fi
 
-TEXT="\n # ttt_source.sh \n GAME=$GAME \n export GAME \n dir="$dir" \n export dir"
+TEXT="\n # ttt_source.sh \n GAME=$GAME \n export GAME"
+TEXT="$TEXT \n dir=\"$dir\" \n export dir"
 TEXT="$TEXT \n size=$size \n export size"
+TEXT="$TEXT \n width=$width \n export width"
+
+"$dir"/Terminal_Execution/write_term "$dir" "$width" 
 
 "$dir"/Terminal_Execution/write_txt_file "$dir"/Terminal_Execution/ttt_source.sh $TEXT
-/bin/rm -f "$dir"/Terminal_Execution/write_txt_file
+/bin/rm -f "$dir"/Terminal_Execution/write_txt_file "$dir"/Terminal_Execution/write_term
 
 open "$dir/Terminal_Execution/Tic Tac Toe.terminal"
 

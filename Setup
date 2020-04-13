@@ -1,0 +1,19 @@
+
+# copies all files to desktop
+
+echo $PWD
+
+mkdir "$0_dir"
+cd "$0_dir"/..
+rmdir "$0_dir"
+
+mkdir ~/Desktop/TTT
+
+cp -r ./* ~/Desktop/TTT
+
+cd ~
+
+echo "Exit"
+read EXIT
+
+exit
