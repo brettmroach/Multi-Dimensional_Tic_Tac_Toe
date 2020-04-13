@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     }
     string dir = argv[1], width = argv[2];
     ofstream outfile;
-    outfile.open("TTT.terminal");
+    outfile.open("Terminal_Execution/TTT.terminal");
     outfile << "\
 <?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\
 <!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n\

@@ -59,6 +59,7 @@ then
 	if [ $w -gt $width ]
 	then
 		width=`expr $w + 2`
+	fi
 fi
 
 TEXT="\n # ttt_source.sh \n GAME=$GAME \n export GAME"
@@ -71,5 +72,5 @@ TEXT="$TEXT \n width=$width \n export width"
 "$dir"/Terminal_Execution/write_txt_file "$dir"/Terminal_Execution/ttt_source.sh $TEXT
 /bin/rm -f "$dir"/Terminal_Execution/write_txt_file "$dir"/Terminal_Execution/write_term
 
-open "$dir/Terminal_Execution/Tic Tac Toe.terminal"
+open "$dir/Terminal_Execution/TTT.terminal"
 

@@ -1,9 +1,8 @@
 
 # Uses ttt_source.sh to play the game
 
-dir=~/Tic\ Tac\ Toe
 
-source "$dir"/Terminal_Execution/ttt_source.sh
+source ./Terminal_Execution/ttt_source.sh
 echo "game: $GAME"
 
 make -C "$dir/TTTfiles" $GAME
@@ -12,7 +11,8 @@ clear
 
 "$dir/TTTfiles/$GAME" $size
 
-echo "\n"
+echo "\n  Hit \"Enter\" to close the program"
+read EXIT
 
 make -C "$dir"/TTTfiles clean
 
