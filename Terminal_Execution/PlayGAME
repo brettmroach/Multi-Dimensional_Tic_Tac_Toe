@@ -16,6 +16,6 @@ read EXIT
 
 make -C "$dir"/TTTfiles clean
 
-/bin/rm -f "$dir"/Terminal_Execution/ttt_source.sh
+/bin/rm -f "$dir"/Terminal_Execution/ttt_source.sh "$dir"/Terminal_Execution/TTT.terminal
 
 exit
