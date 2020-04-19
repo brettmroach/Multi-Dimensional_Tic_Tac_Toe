@@ -1,4 +1,4 @@
-//play_ttt3D.cpp
+//ttt3D.cpp
 // Brett Roach
 // 3 Dimensional game of tic toe at any length and width
 

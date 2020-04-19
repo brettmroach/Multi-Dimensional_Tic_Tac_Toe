@@ -1,7 +1,7 @@
-//play_3D.cpp
+//play_4D.cpp
 #include <iostream>
 #include "functions.h"
-#include "ttt3D.h"
+#include "ttt4D.h"
 using namespace std;
 
 int main(int argc, char *argv[]) {
@@ -10,8 +10,7 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
     int size = stoi(argv[1]);
-    string player1 = namePlayer_3D(1);
-    string player2 = namePlayer_3D(2);
-    ttt3D(player1, player2, size);
+    Player *player = createPlayer_4D();
+    ttt4D(player, size);
     return 0;
 }
