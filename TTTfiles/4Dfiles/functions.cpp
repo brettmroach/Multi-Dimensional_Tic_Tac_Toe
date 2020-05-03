@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <cmath>
 #include "functions.h"
 #include "utility.h"
 
@@ -18,14 +19,6 @@ Player *createPlayer_4D() {
     p2->piece = 'o';
     return p1;
 }
-/*
-string namePlayer(int player_num) {
-    // names the players
-    string player_name;
-    cout << "Player " << player_num << ": ";
-    getline(cin, player_name);
-    return player_name;
-}*/
 
 int gameSize_4D() {
     int size;
@@ -64,21 +57,21 @@ int coordinate_4D(int size, string game) {
     int placement;
     bool valid;
     do {
-        cout << "Cube: ";
+        cout << "  Cube: ";
         cin >> cube;
-        cout << "Level: ";
+        cout << "  Level: ";
         cin >> level;
-        cout << "Row: ";
+        cout << "  Row: ";
         cin >> row;
-        cout << "Column: ";
+        cout << "  Column: ";
         cin >> column;
-        placement = ((cube * size * size * size) + (level * size * size) + (row * size) + column);
-        if (game[placement] != ' ') {
-            cout << "That space is taken.\n";
-            valid = false;
-        } else if ((cube < 0) || (cube >= size) || (level < 0) || (level >= size) || (row < 0) || 
+        placement = (cube * pow(size, 3)) + (level * pow(size, 2)) + (row * size) + column;
+        if ((cube < 0) || (cube >= size) || (level < 0) || (level >= size) || (row < 0) || 
                    (row >= size) || (column < 0) || (column >= size)) {
             cout << "Cube/Level/Row/Collumn # must be a number from 0 to " << (size-1)<< endl;
+            valid = false;
+        } else if (game[placement] != ' ') {
+            cout << "That space is taken.\n";
             valid = false;
         } else {
             valid = true;
@@ -89,8 +82,9 @@ int coordinate_4D(int size, string game) {
 
 void takeTurn_4D(int size, string& game, Player *player) {
     cout << player->name << ": " << player->piece << endl;
-    int placement = coordinate_4D(size, game);
-    game[placement] = player->piece;
+    int position = coordinate_4D(size, game);
+    cout << position << endl;
+    game[position] = player->piece;
     return;
 }
 
@@ -119,20 +113,20 @@ void placeOnGrid_4D(int size, string game) {
         }
         grid += "\n ";
         // cube [0,size-1], level 0, row 0, column 0
-        grid += game[(cube * size * size * size)];
+        grid += game[(cube * pow(size, 3))];
         for (int column = 1; column < size; column++) {
-            // cube _d, level 0, row 0, column 0<_a
+            // cube [0,size-1], level 0, row 0, column [1,size-1]
             grid += " \u2502 ";
-            grid += game[column];
+            grid += game[(cube * pow(size, 3)) + column];
         }
         for (int level = 1; level < size; level++) {
             // cube [0,size-1], level [1,size-1], row 0, column 0
             grid += "   ";
-            grid += game[(cube * size * size * size) + (level * size * size)];
+            grid += game[(cube * pow(size, 3)) + (level * pow(size, 2))];
             for (int column = 1; column < size; column++) {
                 // cube [0,size-1], level [1,size-1], row 0, column [1,size-1]
                 grid += " \u2502 ";
-                grid += game[(cube * size * size * size) + (level * size * size) + column];
+                grid += game[(cube * pow(size, 3)) + (level * pow(size, 2)) + column];
             }
         }
         for (int row = 1; row < size; row++) {
@@ -152,20 +146,20 @@ void placeOnGrid_4D(int size, string game) {
             }
             grid += "\n ";
             // cube [0,size-1], level 0, row [1,size-1], column 0
-            grid += game[(cube * size * size * size) + (row * size)];
+            grid += game[(cube * pow(size, 3)) + (row * size)];
             for (int column = 1; column < size; column++) {
                 // cube [0,size-1], level 0, row [1,size-1], column [1,size-1]
                 grid += " \u2502 ";
-                grid += game[(cube * size * size * size) + (row * size) +  column];
+                grid += game[(cube * pow(size, 3)) + (row * size) +  column];
             }
             for (int level = 1; level < size; level++) {
                 // cube [0,size-1], level 0, row [1,size-1], column 0
                 grid += "   ";
-                grid += game[(cube * size * size * size) + (level * size * size) + (row * size)];
+                grid += game[(cube * pow(size, 3)) + (level * pow(size, 2)) + (row * size)];
                 for (int column = 1; column < size; column++) {
                     // cube [0,size-1], level [1,size-1], row [1,size-1], column [1,size-1]
                     grid += " \u2502 ";
-                    grid += game[(cube * size * size * size) + (level * size * size) + (row * size) + column];
+                    grid += game[(cube * pow(size, 3)) + (level * pow(size, 2)) + (row * size) + column];
                 }
             }
         }
