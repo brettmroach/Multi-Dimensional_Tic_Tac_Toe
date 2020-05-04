@@ -376,7 +376,7 @@ bool win3D_ColRowLev_4_4D(int size, int cube, string game) {
         column = count;
         row = count;
         level = size - 1 - count;
-        placement =(cube * pow(size, 3)) + (level * pow(size, 2))
+        placement = (cube * pow(size, 3)) + (level * pow(size, 2))
                      + (row * size) + column;
         if (game[placement] == ' ') {
             result = false;
@@ -457,7 +457,7 @@ bool win3D_ColRowCub_4_4D(int size, int level, string game) {
         column = count;
         row = count;
         cube = size - 1 - count;
-        placement =(cube * pow(size, 3)) + (level * pow(size, 2))
+        placement = (cube * pow(size, 3)) + (level * pow(size, 2))
                      + (row * size) + column;
         if (game[placement] == ' ') {
             result = false;
@@ -538,7 +538,7 @@ bool win3D_ColLevCub_4_4D(int size, int row, string game) {
         column = count;
         level = count;
         cube = size - 1 - count;
-        placement =(cube * pow(size, 3)) + (level * pow(size, 2))
+        placement = (cube * pow(size, 3)) + (level * pow(size, 2))
                      + (row * size) + column;
         if (game[placement] == ' ') {
             result = false;
@@ -619,7 +619,7 @@ bool win3D_RowLevCub_4_4D(int size, int column, string game) {
         row = count;
         level = count;
         cube = size - 1 - count;
-        placement =(cube * pow(size, 3)) + (level * pow(size, 2))
+        placement = (cube * pow(size, 3)) + (level * pow(size, 2))
                      + (row * size) + column;
         if (game[placement] == ' ') {
             result = false;
@@ -634,4 +634,169 @@ bool win3D_RowLevCub_4_4D(int size, int column, string game) {
     return result;
 }
 
+bool win4D_1_4D(int size, string game) {
+    bool result = true;
+    int column, row, level, cube, placement;
+    for (int count = 0; count < size; count++) {
+        column = count;
+        row = count;
+        level = count;
+        cube = count;
+        placement = (cube * pow(size, 3)) + (level * pow(size, 2))
+                     + (row * size) + column;
+        if (game[placement] == ' ') {
+            result = false;
+            break;
+        } else if (game[placement] != game[0]) {
+            result = false;
+            break;
+        }
+    }
+    return result;
+}
+bool win4D_2_4D(int size, string game) {
+    bool result = true;
+    int column, row, level, cube, placement;
+    for (int count = 0; count < size; count++) {
+        column = size - 1 - count;
+        row = count;
+        level = count;
+        cube = count;
+        placement = (cube * pow(size, 3)) + (level * pow(size, 2))
+                     + (row * size) + column;
+        if (game[placement] == ' ') {
+            result = false;
+            break;
+        } else if (game[placement] != game[size-1]) {
+            result = false;
+            break;
+        }
+    }
+    return result;
+}
+bool win4D_3_4D(int size, string game) {
+    bool result = true;
+    int column, row, level, cube, placement;
+    for (int count = 0; count < size; count++) {
+        column = count;
+        row = size - 1 - count;
+        level = count;
+        cube = count;
+        placement = (cube * pow(size, 3)) + (level * pow(size, 2))
+                     + (row * size) + column;
+        if (game[placement] == ' ') {
+            result = false;
+            break;
+        } else if (game[placement] != game[(size - 1) * size]) {
+            result = false;
+            break;
+        }
+    }
+    return result;
+}
+bool win4D_4_4D(int size, string game) {
+    bool result = true;
+    int column, row, level, cube, placement;
+    for (int count = 0; count < size; count++) {
+        column = count;
+        row = count;
+        level = size - 1 - count;
+        cube = count;
+        placement = (cube * pow(size, 3)) + (level * pow(size, 2))
+                     + (row * size) + column;
+        if (game[placement] == ' ') {
+            result = false;
+            break;
+        } else if (game[placement] != game[(size - 1) * pow(size, 2)]) {
+            result = false;
+            break;
+        }
+    }
+    return result;
+}
+bool win4D_5_4D(int size, string game) {
+    bool result = true;
+    int column, row, level, cube, placement;
+    for (int count = 0; count < size; count++) {
+        column = count;
+        row = count;
+        level = count;
+        cube = size - 1 - count;
+        placement = (cube * pow(size, 3)) + (level * pow(size, 2))
+                     + (row * size) + column;
+        if (game[placement] == ' ') {
+            result = false;
+            break;
+        } else if (game[placement] != game[(size - 1) * pow(size, 3)]) {
+            result = false;
+            break;
+        }
+    }
+    return result;
+}
+bool win4D_6_4D(int size, string game) {
+    bool result = true;
+    int column, row, level, cube, placement;
+    for (int count = 0; count < size; count++) {
+        column = size - 1 - count;
+        row = count;
+        level = count;
+        cube = size - 1 - count;
+        placement = (cube * pow(size, 3)) + (level * pow(size, 2))
+                     + (row * size) + column;
+        if (game[placement] == ' ') {
+            result = false;
+            break;
+        } else if (game[placement]
+                    != game[((size - 1) * pow(size, 3)) + (size - 1)]) {
+            result = false;
+            break;
+        }
+    }
+    return result;
+}
+bool win4D_7_4D(int size, string game) {
+    bool result = true;
+    int column, row, level, cube, placement;
+    for (int count = 0; count < size; count++) {
+        column = count;
+        row = size - 1 - count;
+        level = count;
+        cube = size - 1 - count;
+        placement = (cube * pow(size, 3)) + (level * pow(size, 2))
+                     + (row * size) + column;
+        if (game[placement] == ' ') {
+            result = false;
+            break;
+        } else if (game[placement]
+                    != game[((size - 1) * pow(size, 3))
+                             + ((size - 1) * size)]) {
+            result = false;
+            break;
+        }
+    }
+    return result;
+}
+bool win4D_8_4D(int size, string game) {
+    bool result = true;
+    int column, row, level, cube, placement;
+    for (int count = 0; count < size; count++) {
+        column = count;
+        row = count;
+        level = size - 1 - count;
+        cube = size - 1 - count;
+        placement = (cube * pow(size, 3)) + (level * pow(size, 2))
+                     + (row * size) + column;
+        if (game[placement] == ' ') {
+            result = false;
+            break;
+        } else if (game[placement]
+                    != game[((size - 1) * pow(size, 3))
+                             + ((size - 1) * pow(size, 2))]) {
+            result = false;
+            break;
+        }
+    }
+    return result;
+}
 

@@ -38,5 +38,14 @@ bool win3D_RowLevCub_2_4D(int size, int column, std::string game);
 bool win3D_RowLevCub_3_4D(int size, int column, std::string game);
 bool win3D_RowLevCub_4_4D(int size, int column, std::string game);
 
+bool win4D_1_4D(int size, std::string game);
+bool win4D_2_4D(int size, std::string game);
+bool win4D_3_4D(int size, std::string game);
+bool win4D_4_4D(int size, std::string game);
+bool win4D_5_4D(int size, std::string game);
+bool win4D_6_4D(int size, std::string game);
+bool win4D_7_4D(int size, std::string game);
+bool win4D_8_4D(int size, std::string game);
+
 
 #endif // WINDETECTION_H

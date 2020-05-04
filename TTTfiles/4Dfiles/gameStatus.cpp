@@ -42,13 +42,19 @@ bool detectWin_4D(int size, string game) {
                 continue;
             }
         }
+        // test for 3D Wins
         if (win3D(size, num1, game)) {
             return true;
         } else {
             continue;
         }
     }
-    return false;
+    // test for 4D Wins
+    if (win4D(size, game)) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 
@@ -295,9 +301,45 @@ bool win3D(int size, int num1, string game) {
     }
 }
 
-/* TODO
-bool win4D(int size, string game);
+bool win4D(int size, string game) {
+    if (win4D_1_4D(size, game)) {
+        cout << "Win diagonally from (0,0,0,0) to (" << size-1 << ","
+             << size-1 << "," << size-1 << "," << size-1 << ")\n";
+        return true;
+    } else if (win4D_2_4D(size, game)) {
+        cout << "Win diagonally from (0,0,0," << size-1 << ") to ("
+             << size-1 << "," << size-1 << "," << size-1 << ",0)\n";
+        return true;
+    } else if (win4D_3_4D(size, game)) {
+        cout << "Win diagonally from (0,0," << size-1 << ",0) to ("
+             << size-1 << "," << size-1 << ",0," << size-1 << ")\n";
+        return true;
+    } else if (win4D_4_4D(size, game)) {
+        cout << "Win diagonally from (0," << size-1 << ",0,0) to ("
+             << size-1 << ",0," << size-1 << "," << size-1 << ")\n";
+        return true;
+    } else if (win4D_5_4D(size, game)) {
+        cout << "Win diagonally from (0," << size-1 << "," << size-1
+             << "," << size-1 << ") to (" << size-1 << ",0,0,0)\n";
+        return true;
+    } else if (win4D_6_4D(size, game)) {
+        cout << "Win diagonally from (0," << size-1 << "," << size-1
+             << ",0) to (" << size-1 << ",0,0," << size-1 << ")\n";
+        return true;
+    } else if (win4D_7_4D(size, game)) {
+        cout << "Win diagonally from (0," << size-1 << ",0," << size-1
+             << ") to (" << size-1 << ",0," << size-1 << ",0)\n";
+        return true;
+    } else if (win4D_8_4D(size, game)) {
+        cout << "Win diagonally from (0,0," << size-1 << "," << size-1
+             << ") to (" << size-1 << "," << size-1 << ",0,0)\n";
+        return true;
+    }
+    return false;
+}
 
+
+/* TODO
 bool possible1D(int size, int num1, int num2, int num3, string game);
 bool possible2D(int size, int num1, int num2, string game);
 bool possible3D(int size, int num1, string game);
