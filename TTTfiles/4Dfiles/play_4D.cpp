@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
     int size = stoi(argv[1]);
-    Player *player = createPlayer_4D();
-    ttt4D(player, size);
+    string game = newGame_string_4D(size);
+    placeOnGrid_4D(size, game);
     return 0;
 }

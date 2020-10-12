@@ -2,7 +2,8 @@ CXX = g++
 
 CXXFLAGS = -Wall -Wno-uninitialized
 
-BINARIES = play play_2D play_3D 2Dfiles/play_ttt2D 3Dfiles/play_ttt3D 4Dtest
+BINARIES = play play_2D play_3D 2Dfiles/play_ttt2D 3Dfiles/play_ttt3D \
+	4Dtest print4D
 
 FILES_2D = 2Dfiles/ttt2D.o
 
@@ -34,6 +35,9 @@ play_3D: 3Dfiles/play_3D.o ${FILES_3D}
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o $@
 
 4Dtest: 4Dfiles/printoutTest.o ${FILES_4D}
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o $@
+
+print4D: 4Dfiles/play_4D.o ${FILES_4D}
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o $@
 
 clean:
