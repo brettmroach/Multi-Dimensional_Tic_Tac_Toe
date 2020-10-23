@@ -62,11 +62,11 @@ GameStringList *test_wins(int size) {
 }
 
 void check_failures(GameStringList *list, int size) {
-    GameString *gs = list->head;
+    GameString *gs = list->getHead();
     while (gs != NULL) {
-        cout << endl << gs->message;
-        placeOnGrid_4D(size, gs->game);
-        gs = gs->next;
+        cout << endl << gs->getMessage();
+        placeOnGrid_4D(size, gs->getGame());
+        gs = gs->getNext();
     }
     return;
 }
@@ -83,7 +83,7 @@ string test_win1D_col_4D(int size, int num1, int num2, int num3,
             << ") level(" << num2 << ") cube(" << num3
             << ")\n";
         addToGameStringList(failures, game);
-        failures->tail->message = oss.str();
+        failures->getTail()->setMessage(oss.str());
     }
     return oss.str();
 }
@@ -99,7 +99,7 @@ string test_win1D_row_4D(int size, int num1, int num2, int num3,
             << ") level(" << num2 << ") cube(" << num3
             << ")\n";
         addToGameStringList(failures, game);
-        failures->tail->message = oss.str();
+        failures->getTail()->setMessage(oss.str());
     }
     return oss.str();
 }
@@ -115,7 +115,7 @@ string test_win1D_lev_4D(int size, int num1, int num2, int num3,
             << ") row(" << num2 << ") cube(" << num3
             << ")\n";
         addToGameStringList(failures, game);
-        failures->tail->message = oss.str();
+        failures->getTail()->setMessage(oss.str());
     }
     return oss.str();
 }
@@ -131,7 +131,7 @@ string test_win1D_cub_4D(int size, int num1, int num2, int num3,
             << ") row(" << num2 << ") level(" << num3
             << ")\n";
         addToGameStringList(failures, game);
-        failures->tail->message = oss.str();
+        failures->getTail()->setMessage(oss.str());
     }
     return oss.str();
 }

@@ -14,7 +14,7 @@ int main() {
     int size = 3;
     GameStringList *failures = test_wins(size);
     char response;
-    if (failures->head == NULL) {
+    if (failures->getHead() == NULL) {
         cout << "All Pass\n";
     } else {
         cout << "Check failures? [y/n] ";
