@@ -7,12 +7,12 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
     if (argc != 3) {
-        cerr << "  Usage: " << argv[0] << " <path> <width>\n";
+        cerr << "  Usage: " << argv[0] << "<path> <width>\n";
         exit(1);
     }
     string dir = argv[1], width = argv[2];
     ofstream outfile;
-    outfile.open("Terminal_Execution/TTT.terminal");
+    outfile.open("TTTfiles/Terminal_Execution/TTT.terminal");
     outfile << "\
 <?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\
 <!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n\
@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
 	AAAAAAAAAAAAAAOY\n\
 	</data>\n\
 	<key>CommandString</key>\n\
-	<string>cd " << dir << " ; ./Terminal_Execution/PlayGAME ; exit;</string>\n\
+	<string>cd " << dir << " ; ./TTTfiles/Terminal_Execution/Play_Game ; exit;</string>\n\
 	<key>CursorColor</key>\n\
 	<data>\n\
 	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS\n\

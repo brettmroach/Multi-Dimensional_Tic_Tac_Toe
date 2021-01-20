@@ -2,7 +2,7 @@ CXX = g++
 
 CXXFLAGS = -Wall -Wno-uninitialized
 
-BINARIES = play play_2D play_3D 2Dfiles/play_ttt2D 3Dfiles/play_ttt3D \
+BINARIES = evaluate play_2D play_3D 2Dfiles/check_ttt2D 3Dfiles/check_ttt3D \
 	4Dtest print4D
 
 FILES_2D = 2Dfiles/ttt2D.o
@@ -17,8 +17,9 @@ FILES = ${FILES_2D} ${FILES_3D}
 
 all: ${BINARIES}
 
-play: play.o
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) play.o -o $@
+evaluate: evaluate.o
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) evaluate.o -o $@
+	/bin/rm -f evaluate.o
 
 play_2D: 2Dfiles/play_2D.o ${FILES_2D}
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o $@
@@ -28,11 +29,13 @@ play_3D: 3Dfiles/play_3D.o ${FILES_3D}
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o $@
 	/bin/rm -f 3Dfiles/*.o
 
-2Dfiles/play_ttt2D: 2Dfiles/play_ttt2D.o ${FILES_2D}
+2Dfiles/check_ttt2D: 2Dfiles/check_ttt2D.o ${FILES_2D}
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o $@
+	/bin/rm -f 2Dfiles/*.o
 
-3Dfiles/play_ttt3D: 3Dfiles/play_ttt3D.o ${FILES_3D}
+3Dfiles/check_ttt3D: 3Dfiles/check_ttt3D.o ${FILES_3D}
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o $@
+	/bin/rm -f 3Dfiles/*.o
 
 4Dtest: 4Dfiles/printoutTest.o ${FILES_4D}
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o $@

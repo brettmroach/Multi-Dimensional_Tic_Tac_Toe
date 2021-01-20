@@ -1,0 +1,17 @@
+
+# Play_Game 
+
+GAME=play_2D 
+dir="/Users/brettroach/Multi-Dimensional_Tic_Tac_Toe" 
+size=1 
+width=80 
+
+/Users/brettroach/Multi-Dimensional_Tic_Tac_Toe/TTTfiles/play_2D 1 
+
+echo "\n Hit [Enter] to close the program" 
+
+read EXIT 
+
+/bin/rm -f /Users/brettroach/Multi-Dimensional_Tic_Tac_Toe/TTTfiles/Terminal_Execution/TTT.terminal 
+
+exit 

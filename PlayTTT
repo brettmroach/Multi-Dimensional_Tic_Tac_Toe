@@ -1,19 +1,12 @@
+# BEGINNING
 
-# First make the "play" program
+# REMOVED [First make the "play" program]
 
-mkdir "$0"_dir
-cd "$0"_dir/..
-rmdir "$0"_dir
 dir="$PWD"
 
-make -C "$dir"/TTTfiles play
-
-# Clean out directories and make programs
-
-/bin/rm -f "$dir"/Terminal_Execution/ttt_source.sh "$dir"/Terminal_Execution/write_txt_file \
-	"$dir"/Terminal_Execution/write_term "$dir"/Terminal_Execution/TTT.terminal
-g++ "$dir"/Terminal_Execution/write_txt_file.cpp -o "$dir"/Terminal_Execution/write_txt_file
-g++ "$dir"/Terminal_Execution/write_term.cpp -o "$dir"/Terminal_Execution/write_term
+# Make new Terminal Window
+/bin/rm -f "$dir"/TTTfiles/Terminal_Execution/TTT.terminal \
+	"$dir"/TTTfiles/Terminal_Execution/Play_Game
 
 
 # ask for dimension of game
@@ -41,13 +34,11 @@ width=80
 response=N
 while [ "$response" != "Y" -a "$response" != "y" ]
 do
-	"$dir"/TTTfiles/play $D
+	"$dir"/TTTfiles/evaluate $D
 	read size
-	"$dir"/TTTfiles/play $D $size
+	"$dir"/TTTfiles/evaluate $D $size
 	read response
 done
-
-make -C "$dir"/TTTfiles clean
 
 if [ $D -eq 2 ]
 then
@@ -62,16 +53,22 @@ then
 	fi
 fi
 
-TEXT="\n # ttt_source.sh \n GAME=$GAME \n export GAME"
-TEXT="$TEXT \n dir=\"$dir\" \n export dir"
-TEXT="$TEXT \n size=$size \n export size"
-TEXT="$TEXT \n width=$width \n export width"
+TEXT="\n # Play_Game \n \n GAME=$GAME "
+TEXT="$TEXT \n dir=\"$dir\" "
+TEXT="$TEXT \n size=$size "
+TEXT="$TEXT \n width=$width "
+TEXT="$TEXT \n \n $dir/TTTfiles/$GAME $size "
+TEXT="$TEXT \n \n echo \"\n  Hit [Enter] to close the program\" "
+TEXT="$TEXT \n \n read EXIT"
+TEXT="$TEXT \n \n /bin/rm -f $dir/TTTfiles/Terminal_Execution/TTT.terminal"
+TEXT="$TEXT \n \n exit"
 
-"$dir"/Terminal_Execution/write_term "$dir" "$width" 
 
-"$dir"/Terminal_Execution/write_txt_file "$dir"/Terminal_Execution/ttt_source.sh $TEXT
+# putting the data on the file to be run
+"$dir"/TTTfiles/Terminal_Execution/write_txt_file "$dir"/TTTfiles/Terminal_Execution/Play_Game $TEXT
+chmod +x "$dir"/TTTfiles/Terminal_Execution/Play_Game
 
-/bin/rm -f "$dir"/Terminal_Execution/write_txt_file "$dir"/Terminal_Execution/write_term
+"$dir"/TTTfiles/Terminal_Execution/write_term "$dir" "$width" 
 
-open "$dir/Terminal_Execution/TTT.terminal"
+open "$dir/TTTfiles/Terminal_Execution/TTT.terminal"
 
