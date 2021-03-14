@@ -61,6 +61,7 @@ TEXT="$TEXT \n \n $dir/TTTfiles/$GAME $size "
 TEXT="$TEXT \n \n echo \"\n  Hit [Enter] to close the program\" "
 TEXT="$TEXT \n \n read EXIT"
 TEXT="$TEXT \n \n /bin/rm -f $dir/TTTfiles/Terminal_Execution/TTT.terminal"
+TEXT="$TEXT \n \n /bin/rm -f $dir/TTTfiles/Terminal_Execution/Play_Game"
 TEXT="$TEXT \n \n exit"
 
 
