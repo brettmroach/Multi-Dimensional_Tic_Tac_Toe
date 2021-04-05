@@ -14,8 +14,13 @@ GameStringList *test_wins(int size) {
     string game;
     GameStringList *failures = new GameStringList;
     for (int num1 = 0; num1 < size; num1++) {
+
         for (int num2 = 0; num2 < size; num2++) {
+
             for (int num3 = 0; num3 < size; num3++) {
+
+/* ============================================================ */
+
                 // testing win1D_col_4D
                 game = newGame_string_4D(size);
                 for (int num4 = 0; num4 < size; num4++) {
@@ -56,6 +61,9 @@ GameStringList *test_wins(int size) {
                 cout << test_win1D_cub_4D(size, num1, num2, num3,
                                            game, failures);
             }
+
+/* ============================================================ */
+
             // testing win2D_ColRow_1_4D
             game = newGame_string_4D(size);
             for (int num4 = 0; num4 < size; num4++) {
@@ -176,9 +184,177 @@ GameStringList *test_wins(int size) {
             cout << test_win2D_LevCub_2_4D(size, num1, num2,
                                            game, failures);
         }
+
+/* ============================================================ */
+
+        // testing win3D_ColRowLev_1_4D
+        game = newGame_string_4D(size);
+        for (int num4 = 0; num4 < size; num4++) {
+            game[(num1 * pow(size, 3))
+                  + (num4 * pow(size, 2))
+                  + (num4 * size) + num4] = 'x';
+        }
+        cout << test_win3D_ColRowLev_1_4D(size, num1,
+                                           game, failures);
+
+        // testing win3D_ColRowLev_2_4D
+        game = newGame_string_4D(size);
+        for (int num4 = 0; num4 < size; num4++) {
+            game[(num1 * pow(size, 3))
+                  + (num4 * pow(size, 2))
+                  + (num4 * size) + (size - 1 - num4)] = 'x';
+        }
+        cout << test_win3D_ColRowLev_2_4D(size, num1,
+                                           game, failures);
+
+        // testing win3D_ColRowLev_3_4D
+        game = newGame_string_4D(size);
+        for (int num4 = 0; num4 < size; num4++) {
+            game[(num1 * pow(size, 3))
+                  + (num4 * pow(size, 2))
+                  + ((size - 1 - num4) * size) + num4] = 'x';
+        }
+        cout << test_win3D_ColRowLev_3_4D(size, num1,
+                                           game, failures);
+
+        // testing win3D_ColRowLev_4_4D
+        game = newGame_string_4D(size);
+        for (int num4 = 0; num4 < size; num4++) {
+            game[(num1 * pow(size, 3))
+                  + ((size - 1 - num4) * pow(size, 2))
+                  + (num4 * size) + num4] = 'x';
+        }
+        cout << test_win3D_ColRowLev_4_4D(size, num1,
+                                           game, failures);
+        
+        // testing win3D_ColRowCub_1_4D
+        game = newGame_string_4D(size);
+        for (int num4 = 0; num4 < size; num4++) {
+            game[(num4 * pow(size, 3))
+                  + (num1 * pow(size, 2))
+                  + (num4 * size) + num4] = 'x';
+        }
+        cout << test_win3D_ColRowCub_1_4D(size, num1,
+                                           game, failures);
+
+        // testing win3D_ColRowCub_2_4D
+        game = newGame_string_4D(size);
+        for (int num4 = 0; num4 < size; num4++) {
+            game[(num4 * pow(size, 3))
+                  + (num1 * pow(size, 2))
+                  + (num4 * size) + (size - 1 - num4)] = 'x';
+        }
+        cout << test_win3D_ColRowCub_2_4D(size, num1,
+                                           game, failures);
+
+        // testing win3D_ColRowCub_3_4D
+        game = newGame_string_4D(size);
+        for (int num4 = 0; num4 < size; num4++) {
+            game[(num4 * pow(size, 3))
+                  + (num1 * pow(size, 2))
+                  + ((size - 1 - num4) * size) + num4] = 'x';
+        }
+        cout << test_win3D_ColRowCub_3_4D(size, num1,
+                                           game, failures);
+
+        // testing win3D_ColRowCub_4_4D
+        game = newGame_string_4D(size);
+        for (int num4 = 0; num4 < size; num4++) {
+            game[((size - 1 - num4) * pow(size, 3))
+                  + (num1 * pow(size, 2))
+                  + (num4 * size) + num4] = 'x';
+        }
+        cout << test_win3D_ColRowCub_4_4D(size, num1,
+                                           game, failures);
+
+        // testing win3D_ColLevCub_1_4D
+        game = newGame_string_4D(size);
+        for (int num4 = 0; num4 < size; num4++) {
+            game[(num4 * pow(size, 3))
+                  + (num4 * pow(size, 2))
+                  + (num1 * size) + num4] = 'x';
+        }
+        cout << test_win3D_ColLevCub_1_4D(size, num1,
+                                           game, failures);
+
+        // testing win3D_ColLevCub_2_4D
+        game = newGame_string_4D(size);
+        for (int num4 = 0; num4 < size; num4++) {
+            game[(num4 * pow(size, 3))
+                  + (num4 * pow(size, 2))
+                  + (num1 * size) + (size - 1 - num4)] = 'x';
+        }
+        cout << test_win3D_ColLevCub_2_4D(size, num1,
+                                           game, failures);
+
+        // testing win3D_ColLevCub_3_4D
+        game = newGame_string_4D(size);
+        for (int num4 = 0; num4 < size; num4++) {
+            game[(num4 * pow(size, 3))
+                  + ((size - 1 - num4) * pow(size, 2))
+                  + (num1 * size) + num4] = 'x';
+        }
+        cout << test_win3D_ColLevCub_3_4D(size, num1,
+                                           game, failures);
+
+        // testing win3D_ColLevCub_4_4D
+        game = newGame_string_4D(size);
+        for (int num4 = 0; num4 < size; num4++) {
+            game[((size - 1 - num4) * pow(size, 3))
+                  + (num4 * pow(size, 2))
+                  + (num1 * size) + num4] = 'x';
+        }
+        cout << test_win3D_ColLevCub_4_4D(size, num1,
+                                           game, failures);
+
+        // testing win3D_RowLevCub_1_4D
+        game = newGame_string_4D(size);
+        for (int num4 = 0; num4 < size; num4++) {
+            game[(num4 * pow(size, 3))
+                  + (num4 * pow(size, 2))
+                  + (num4 * size) + num1] = 'x';
+        }
+        cout << test_win3D_RowLevCub_1_4D(size, num1,
+                                           game, failures);
+
+        // testing win3D_RowLevCub_2_4D
+        game = newGame_string_4D(size);
+        for (int num4 = 0; num4 < size; num4++) {
+            game[(num4 * pow(size, 3))
+                  + (num4 * pow(size, 2))
+                  + ((size - 1 - num4) * size) + num1] = 'x';
+        }
+        cout << test_win3D_RowLevCub_2_4D(size, num1,
+                                           game, failures);
+
+        // testing win3D_RowLevCub_3_4D
+        game = newGame_string_4D(size);
+        for (int num4 = 0; num4 < size; num4++) {
+            game[(num4 * pow(size, 3))
+                  + ((size - 1 - num4) * pow(size, 2))
+                  + (num4 * size) + num1] = 'x';
+        }
+        cout << test_win3D_RowLevCub_3_4D(size, num1,
+                                           game, failures);
+
+        // testing win3D_RowLevCub_4_4D
+        game = newGame_string_4D(size);
+        for (int num4 = 0; num4 < size; num4++) {
+            game[((size - 1 - num4) * pow(size, 3))
+                  + (num4 * pow(size, 2))
+                  + (num4 * size) + num1] = 'x';
+        }
+        cout << test_win3D_RowLevCub_4_4D(size, num1,
+                                           game, failures);
+
     }
     return failures;
 }
+
+/* ============================================================ */
+
+/* ============================================================ */
+
 
 void check_failures(GameStringList *list, int size) {
     GameString *gs = list->getHead();
@@ -189,6 +365,11 @@ void check_failures(GameStringList *list, int size) {
     }
     return;
 }
+
+/* ============================================================ */
+
+/* ============================================================ */
+
 
 string test_win1D_col_4D(int size, int row, int level, int cube,
                          string game, GameStringList *failures) {
@@ -254,6 +435,11 @@ string test_win1D_cub_4D(int size, int column, int row, int level,
     }
     return oss.str();
 }
+
+/* ============================================================ */
+
+/* ============================================================ */
+
 
 string test_win2D_ColRow_1_4D(int size, int level, int cube,
                          string game, GameStringList *failures) {
@@ -418,6 +604,235 @@ string test_win2D_LevCub_2_4D(int size, int column, int row,
     } else {
         oss << "FAIL: win2D_LevCub_2_4D; col(" << column
             << ") row(" << row << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+
+/* ============================================================ */
+
+/* ============================================================ */
+
+string test_win3D_ColRowLev_1_4D(int size, int cube, string game,
+                                  GameStringList *failures) {
+    ostringstream oss;
+    if (win3D_ColRowLev_1_4D(size, cube, game)) {
+        oss << "  PASSED: win3D_ColRowLev_1_4D; cube("
+            << cube << ")\n";
+    } else {
+        oss << "FAIL: win3D_ColRowLev_1_4D; cube("
+            << cube << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win3D_ColRowLev_2_4D(int size, int cube, string game,
+                                  GameStringList *failures) {
+    ostringstream oss;
+    if (win3D_ColRowLev_2_4D(size, cube, game)) {
+        oss << "  PASSED: win3D_ColRowLev_2_4D; cube("
+            << cube << ")\n";
+    } else {
+        oss << "FAIL: win3D_ColRowLev_2_4D; cube("
+            << cube << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win3D_ColRowLev_3_4D(int size, int cube, string game,
+                                  GameStringList *failures) {
+    ostringstream oss;
+    if (win3D_ColRowLev_3_4D(size, cube, game)) {
+        oss << "  PASSED: win3D_ColRowLev_3_4D; cube("
+            << cube << ")\n";
+    } else {
+        oss << "FAIL: win3D_ColRowLev_3_4D; cube("
+            << cube << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win3D_ColRowLev_4_4D(int size, int cube, string game,
+                                  GameStringList *failures) {
+    ostringstream oss;
+    if (win3D_ColRowLev_4_4D(size, cube, game)) {
+        oss << "  PASSED: win3D_ColRowLev_4_4D; cube("
+            << cube << ")\n";
+    } else {
+        oss << "FAIL: win3D_ColRowLev_4_4D; cube("
+            << cube << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win3D_ColRowCub_1_4D(int size, int level, string game,
+                                  GameStringList *failures) {
+    ostringstream oss;
+    if (win3D_ColRowCub_1_4D(size, level, game)) {
+        oss << "  PASSED: win3D_ColRowCub_1_4D; level("
+            << level << ")\n";
+    } else {
+        oss << "FAIL: win3D_ColRowCub_1_4D; level("
+            << level << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win3D_ColRowCub_2_4D(int size, int level, string game,
+                                  GameStringList *failures) {
+    ostringstream oss;
+    if (win3D_ColRowCub_2_4D(size, level, game)) {
+        oss << "  PASSED: win3D_ColRowCub_2_4D; level("
+            << level << ")\n";
+    } else {
+        oss << "FAIL: win3D_ColRowCub_2_4D; level("
+            << level << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win3D_ColRowCub_3_4D(int size, int level, string game,
+                                  GameStringList *failures) {
+    ostringstream oss;
+    if (win3D_ColRowCub_3_4D(size, level, game)) {
+        oss << "  PASSED: win3D_ColRowCub_3_4D; level("
+            << level << ")\n";
+    } else {
+        oss << "FAIL: win3D_ColRowCub_3_4D; level("
+            << level << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win3D_ColRowCub_4_4D(int size, int level, string game,
+                                  GameStringList *failures) {
+    ostringstream oss;
+    if (win3D_ColRowCub_4_4D(size, level, game)) {
+        oss << "  PASSED: win3D_ColRowCub_4_4D; level("
+            << level << ")\n";
+    } else {
+        oss << "FAIL: win3D_ColRowCub_4_4D; level("
+            << level << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win3D_ColLevCub_1_4D(int size, int row, string game,
+                                  GameStringList *failures) {
+    ostringstream oss;
+    if (win3D_ColLevCub_1_4D(size, row, game)) {
+        oss << "  PASSED: win3D_ColLevCub_1_4D; row("
+            << row << ")\n";
+    } else {
+        oss << "FAIL: win3D_ColLevCub_1_4D; row("
+            << row << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win3D_ColLevCub_2_4D(int size, int row, string game,
+                                  GameStringList *failures) {
+    ostringstream oss;
+    if (win3D_ColLevCub_2_4D(size, row, game)) {
+        oss << "  PASSED: win3D_ColLevCub_2_4D; row("
+            << row << ")\n";
+    } else {
+        oss << "FAIL: win3D_ColLevCub_2_4D; row("
+            << row << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win3D_ColLevCub_3_4D(int size, int row, string game,
+                                  GameStringList *failures) {
+    ostringstream oss;
+    if (win3D_ColLevCub_3_4D(size, row, game)) {
+        oss << "  PASSED: win3D_ColLevCub_3_4D; row("
+            << row << ")\n";
+    } else {
+        oss << "FAIL: win3D_ColLevCub_3_4D; row("
+            << row << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win3D_ColLevCub_4_4D(int size, int row, string game,
+                                  GameStringList *failures) {
+    ostringstream oss;
+    if (win3D_ColLevCub_4_4D(size, row, game)) {
+        oss << "  PASSED: win3D_ColLevCub_4_4D; row("
+            << row << ")\n";
+    } else {
+        oss << "FAIL: win3D_ColLevCub_4_4D; row("
+            << row << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win3D_RowLevCub_1_4D(int size, int column, string game,
+                                  GameStringList *failures) {
+    ostringstream oss;
+    if (win3D_RowLevCub_1_4D(size, column, game)) {
+        oss << "  PASSED: win3D_RowLevCub_1_4D; col("
+            << column << ")\n";
+    } else {
+        oss << "FAIL: win3D_RowLevCub_1_4D; col("
+            << column << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win3D_RowLevCub_2_4D(int size, int column, string game,
+                                  GameStringList *failures) {
+    ostringstream oss;
+    if (win3D_RowLevCub_2_4D(size, column, game)) {
+        oss << "  PASSED: win3D_RowLevCub_2_4D; col("
+            << column << ")\n";
+    } else {
+        oss << "FAIL: win3D_RowLevCub_2_4D; col("
+            << column << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win3D_RowLevCub_3_4D(int size, int column, string game,
+                                  GameStringList *failures) {
+    ostringstream oss;
+    if (win3D_RowLevCub_3_4D(size, column, game)) {
+        oss << "  PASSED: win3D_RowLevCub_3_4D; col("
+            << column << ")\n";
+    } else {
+        oss << "FAIL: win3D_RowLevCub_3_4D; col("
+            << column << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win3D_RowLevCub_4_4D(int size, int column, string game,
+                                  GameStringList *failures) {
+    ostringstream oss;
+    if (win3D_RowLevCub_4_4D(size, column, game)) {
+        oss << "  PASSED: win3D_RowLevCub_4_4D; col("
+            << column << ")\n";
+    } else {
+        oss << "FAIL: win3D_RowLevCub_4_4D; col("
+            << column << ")\n";
         addToGameStringList(failures, game);
         failures->getTail()->setMessage(oss.str());
     }

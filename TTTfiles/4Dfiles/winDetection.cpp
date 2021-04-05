@@ -69,7 +69,7 @@ bool win1D_cub_4D(int size, int column, int row, int level, std::string game) {
     }
     return result;
 }
-/* The 2D vector spaces searched in the following
+/* The 2D vector spaces anazlyzed in the following
  * functions are defined as follows:
  * ColRow = <column, row>; (const level, cube)
  * ColLev = <column, level>; (const row, cube)
@@ -308,6 +308,13 @@ bool win2D_LevCub_2_4D(int size, int column, int row, string game) {
     return result;
 }
 
+/* The 3D vector spaces analyzed in the following
+ * functions are defined as follows:
+ * ColRowLev = <column, row, level>; (const cube)
+ * ColRowCub = <column, row, cube>; (const level)
+ * ColLevCub = <column, level, cube>; (const row)
+ * RowLevCub = <row, level, cube>; (const column)
+ */
 
 bool win3D_ColRowLev_1_4D(int size, int cube, string game) {
     bool result = true;
