@@ -43,6 +43,7 @@ play_3D: 3Dfiles/play_3D.o ${FILES_3D}
 
 print4D: 4Dfiles/play_4D.o ${FILES_4D}
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o $@
+	/bin/rm -f 4Dfiles/*.o
 
 clean:
 	/bin/rm -f ${BINARIES} *.o

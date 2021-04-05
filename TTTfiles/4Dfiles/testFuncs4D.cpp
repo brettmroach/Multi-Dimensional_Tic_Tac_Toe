@@ -96,6 +96,85 @@ GameStringList *test_wins(int size) {
             cout << test_win2D_ColLev_2_4D(size, num1, num2,
                                            game, failures);
                                            
+            // testing win2D_ColCub_1_4D
+            game = newGame_string_4D(size);
+            for (int num4 = 0; num4 < size; num4++) {
+                game[(num4 * pow(size, 3))
+                      + (num2 * pow(size, 2))
+                      + (num1 * size) + num4] = 'x';
+            }
+            cout << test_win2D_ColCub_1_4D(size, num1, num2,
+                                           game, failures);
+            
+            // testing win2D_ColCub_2_4D
+            game = newGame_string_4D(size);
+            for (int num4 = 0; num4 < size; num4++) {
+                game[(num4 * pow(size, 3))
+                      + (num2 * pow(size, 2))
+                      + (num1 * size) + (size - 1 - num4)] = 'x';
+            }
+            cout << test_win2D_ColCub_2_4D(size, num1, num2,
+                                           game, failures);
+            
+            // testing win2D_RowLev_1_4D
+            game = newGame_string_4D(size);
+            for (int num4 = 0; num4 < size; num4++) {
+                game[(num2 * pow(size, 3))
+                      + (num4 * pow(size, 2))
+                      + (num4 * size) + num1] = 'x';
+            }
+            cout << test_win2D_RowLev_1_4D(size, num1, num2,
+                                           game, failures);
+            
+            // testing win2D_RowLev_2_4D
+            game = newGame_string_4D(size);
+            for (int num4 = 0; num4 < size; num4++) {
+                game[(num2 * pow(size, 3))
+                      + (num4 * pow(size, 2))
+                      + ((size - 1 - num4) * size) + num1] = 'x';
+            }
+            cout << test_win2D_RowLev_2_4D(size, num1, num2,
+                                           game, failures);
+
+            // testing win2D_RowCub_1_4D
+            game = newGame_string_4D(size);
+            for (int num4 = 0; num4 < size; num4++) {
+                game[(num4 * pow(size, 3))
+                      + (num2 * pow(size, 2))
+                      + (num4 * size) + num1] = 'x';
+            }
+            cout << test_win2D_RowCub_1_4D(size, num1, num2,
+                                           game, failures);
+
+            // testing win2D_RowCub_2_4D
+            game = newGame_string_4D(size);
+            for (int num4 = 0; num4 < size; num4++) {
+                game[(num4 * pow(size, 3))
+                      + (num2 * pow(size, 2))
+                      + ((size - 1 - num4) * size) + num1] = 'x';
+            }
+            cout << test_win2D_RowCub_2_4D(size, num1, num2,
+                                           game, failures);
+
+            // testing win2D_LevCub_1_4D
+            game = newGame_string_4D(size);
+            for (int num4 = 0; num4 < size; num4++) {
+                game[(num4 * pow(size, 3))
+                      + (num4 * pow(size, 2))
+                      + (num2 * size) + num1] = 'x';
+            }
+            cout << test_win2D_LevCub_1_4D(size, num1, num2,
+                                           game, failures);
+
+            // testing win2D_LevCub_2_4D
+            game = newGame_string_4D(size);
+            for (int num4 = 0; num4 < size; num4++) {
+                game[(num4 * pow(size, 3))
+                      + ((size - 1 - num4) * pow(size, 2))
+                      + (num2 * size) + num1] = 'x';
+            }
+            cout << test_win2D_LevCub_2_4D(size, num1, num2,
+                                           game, failures);
         }
     }
     return failures;
@@ -111,64 +190,64 @@ void check_failures(GameStringList *list, int size) {
     return;
 }
 
-string test_win1D_col_4D(int size, int num1, int num2, int num3,
+string test_win1D_col_4D(int size, int row, int level, int cube,
                          string game, GameStringList *failures) {
     ostringstream oss;
-    if (win1D_col_4D(size, num1, num2, num3, game)) {
-        oss << "  PASSED: win1D_col_4D; row(" << num1
-            << ") level(" << num2 << ") cube(" << num3
+    if (win1D_col_4D(size, row, level, cube, game)) {
+        oss << "  PASSED: win1D_col_4D; row(" << row
+            << ") level(" << level << ") cube(" << cube
             << ")\n";
     } else {
-        oss << "FAIL: win1D_col_4D; row(" << num1
-            << ") level(" << num2 << ") cube(" << num3
+        oss << "FAIL: win1D_col_4D; row(" << row
+            << ") level(" << level << ") cube(" << cube
             << ")\n";
         addToGameStringList(failures, game);
         failures->getTail()->setMessage(oss.str());
     }
     return oss.str();
 }
-string test_win1D_row_4D(int size, int num1, int num2, int num3,
+string test_win1D_row_4D(int size, int column, int level, int cube,
                          string game, GameStringList *failures) {
     ostringstream oss;
-    if (win1D_row_4D(size, num1, num2, num3, game)) {
-        oss << "  PASSED: win1D_row_4D; col(" << num1
-            << ") level(" << num2 << ") cube(" << num3
+    if (win1D_row_4D(size, column, level, cube, game)) {
+        oss << "  PASSED: win1D_row_4D; col(" << column
+            << ") level(" << level << ") cube(" << cube
             << ")\n";
     } else {
-        oss << "FAIL: win1D_row_4D; col(" << num1
-            << ") level(" << num2 << ") cube(" << num3
+        oss << "FAIL: win1D_row_4D; col(" << column
+            << ") level(" << level << ") cube(" << cube
             << ")\n";
         addToGameStringList(failures, game);
         failures->getTail()->setMessage(oss.str());
     }
     return oss.str();
 }
-string test_win1D_lev_4D(int size, int num1, int num2, int num3,
+string test_win1D_lev_4D(int size, int column, int row, int cube,
                          string game, GameStringList *failures) {
     ostringstream oss;
-    if (win1D_lev_4D(size, num1, num2, num3, game)) {
-        oss << "  PASSED: win1D_lev_4D; col(" << num1
-            << ") row(" << num2 << ") cube(" << num3
+    if (win1D_lev_4D(size, column, row, cube, game)) {
+        oss << "  PASSED: win1D_lev_4D; col(" << column
+            << ") row(" << row << ") cube(" << cube
             << ")\n";
     } else {
-        oss << "FAIL: win1D_lev_4D; col(" << num1
-            << ") row(" << num2 << ") cube(" << num3
+        oss << "FAIL: win1D_lev_4D; col(" << column
+            << ") row(" << row << ") cube(" << cube
             << ")\n";
         addToGameStringList(failures, game);
         failures->getTail()->setMessage(oss.str());
     }
     return oss.str();
 }
-string test_win1D_cub_4D(int size, int num1, int num2, int num3,
+string test_win1D_cub_4D(int size, int column, int row, int level,
                          string game, GameStringList *failures) {
     ostringstream oss;
-    if (win1D_cub_4D(size, num1, num2, num3, game)) {
-        oss << "  PASSED: win1D_cub_4D; col(" << num1
-            << ") row(" << num2 << ") level(" << num3
+    if (win1D_cub_4D(size, column, row, level, game)) {
+        oss << "  PASSED: win1D_cub_4D; col(" << column
+            << ") row(" << row << ") level(" << level
             << ")\n";
     } else {
-        oss << "FAIL: win1D_cub_4D; col(" << num1
-            << ") row(" << num2 << ") level(" << num3
+        oss << "FAIL: win1D_cub_4D; col(" << column
+            << ") row(" << row << ") level(" << level
             << ")\n";
         addToGameStringList(failures, game);
         failures->getTail()->setMessage(oss.str());
@@ -176,57 +255,169 @@ string test_win1D_cub_4D(int size, int num1, int num2, int num3,
     return oss.str();
 }
 
-string test_win2D_ColRow_1_4D(int size, int num1, int num2,
+string test_win2D_ColRow_1_4D(int size, int level, int cube,
                          string game, GameStringList *failures) {
     ostringstream oss;
-    if (win2D_ColRow_1_4D(size, num1, num2, game)) {
-        oss << "  PASSED: win2D_ColRow_1_4D; level(" << num1
-            << ") cube(" << num2 << ")\n";
+    if (win2D_ColRow_1_4D(size, level, cube, game)) {
+        oss << "  PASSED: win2D_ColRow_1_4D; level(" << level
+            << ") cube(" << cube << ")\n";
     } else {
-        oss << "FAIL: win2D_ColRow_1_4D; level(" << num1
-            << ") cube(" << num2 << ")\n";
+        oss << "FAIL: win2D_ColRow_1_4D; level(" << level
+            << ") cube(" << cube << ")\n";
         addToGameStringList(failures, game);
         failures->getTail()->setMessage(oss.str());
     }
     return oss.str();
 }
-string test_win2D_ColRow_2_4D(int size, int num1, int num2,
+string test_win2D_ColRow_2_4D(int size, int level, int cube,
                          string game, GameStringList *failures) {
     ostringstream oss;
-    if (win2D_ColRow_2_4D(size, num1, num2, game)) {
-        oss << "  PASSED: win2D_ColRow_2_4D; level(" << num1
-            << ") cube(" << num2 << ")\n";
+    if (win2D_ColRow_2_4D(size, level, cube, game)) {
+        oss << "  PASSED: win2D_ColRow_2_4D; level(" << level
+            << ") cube(" << cube << ")\n";
     } else {
-        oss << "FAIL: win2D_ColRow_2_4D; level(" << num1
-            << ") cube(" << num2 << ")\n";
+        oss << "FAIL: win2D_ColRow_2_4D; level(" << level
+            << ") cube(" << cube << ")\n";
         addToGameStringList(failures, game);
         failures->getTail()->setMessage(oss.str());
     }
     return oss.str();
 }
-string test_win2D_ColLev_1_4D(int size, int num1, int num2,
+string test_win2D_ColLev_1_4D(int size, int row, int cube,
                          string game, GameStringList *failures) {
     ostringstream oss;
-    if (win2D_ColLev_1_4D(size, num1, num2, game)) {
-        oss << "  PASSED: win2D_ColLev_1_4D; row(" << num1
-            << ") cube(" << num2 << ")\n";
+    if (win2D_ColLev_1_4D(size, row, cube, game)) {
+        oss << "  PASSED: win2D_ColLev_1_4D; row(" << row
+            << ") cube(" << cube << ")\n";
     } else {
-        oss << "FAIL: win2D_ColLev_1_4D; row(" << num1
-            << ") cube(" << num2 << ")\n";
+        oss << "FAIL: win2D_ColLev_1_4D; row(" << row
+            << ") cube(" << cube << ")\n";
         addToGameStringList(failures, game);
         failures->getTail()->setMessage(oss.str());
     }
     return oss.str();
 }
-string test_win2D_ColLev_2_4D(int size, int num1, int num2,
+string test_win2D_ColLev_2_4D(int size, int row, int cube,
                          string game, GameStringList *failures) {
     ostringstream oss;
-    if (win2D_ColLev_2_4D(size, num1, num2, game)) {
-        oss << "  PASSED: win2D_ColLev_2_4D; row(" << num1
-            << ") cube(" << num2 << ")\n";
+    if (win2D_ColLev_2_4D(size, row, cube, game)) {
+        oss << "  PASSED: win2D_ColLev_2_4D; row(" << row
+            << ") cube(" << cube << ")\n";
     } else {
-        oss << "FAIL: win2D_ColLev_2_4D; row(" << num1
-            << ") cube(" << num2 << ")\n";
+        oss << "FAIL: win2D_ColLev_2_4D; row(" << row
+            << ") cube(" << cube << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win2D_ColCub_1_4D(int size, int row, int level,
+                         string game, GameStringList *failures) {
+    ostringstream oss;
+    if (win2D_ColCub_1_4D(size, row, level, game)) {
+        oss << "  PASSED: win2D_ColCub_1_4D; row(" << row
+            << ") level(" << level << ")\n";
+    } else {
+        oss << "FAIL: win2D_ColCub_1_4D; row(" << row
+            << ") level(" << level << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win2D_ColCub_2_4D(int size, int row, int level,
+                         string game, GameStringList *failures) {
+    ostringstream oss;
+    if (win2D_ColCub_2_4D(size, row, level, game)) {
+        oss << "  PASSED: win2D_ColCub_2_4D; row(" << row
+            << ") level(" << level << ")\n";
+    } else {
+        oss << "FAIL: win2D_ColCub_2_4D; row(" << row
+            << ") level(" << level << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win2D_RowLev_1_4D(int size, int column, int cube,
+                         string game, GameStringList *failures) {
+    ostringstream oss;
+    if (win2D_RowLev_1_4D(size, column, cube, game)) {
+        oss << "  PASSED: win2D_RowLev_1_4D; col(" << column
+            << ") cube(" << cube << ")\n";
+    } else {
+        oss << "FAIL: win2D_RowLev_1_4D; col(" << column
+            << ") cube(" << cube << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win2D_RowLev_2_4D(int size, int column, int cube,
+                         string game, GameStringList *failures) {
+    ostringstream oss;
+    if (win2D_RowLev_2_4D(size, column, cube, game)) {
+        oss << "  PASSED: win2D_RowLev_2_4D; col(" << column
+            << ") cube(" << cube << ")\n";
+    } else {
+        oss << "FAIL: win2D_RowLev_2_4D; col(" << column
+            << ") cube(" << cube << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win2D_RowCub_1_4D(int size, int column, int level,
+                         string game, GameStringList *failures) {
+    ostringstream oss;
+    if (win2D_RowCub_1_4D(size, column, level, game)) {
+        oss << "  PASSED: win2D_RowCub_1_4D; col(" << column
+            << ") level(" << level << ")\n";
+    } else {
+        oss << "FAIL: win2D_RowCub_1_4D; col(" << column
+            << ") level(" << level << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win2D_RowCub_2_4D(int size, int column, int level,
+                         string game, GameStringList *failures) {
+    ostringstream oss;
+    if (win2D_RowCub_2_4D(size, column, level, game)) {
+        oss << "  PASSED: win2D_RowCub_2_4D; col(" << column
+            << ") level(" << level << ")\n";
+    } else {
+        oss << "FAIL: win2D_RowCub_2_4D; col(" << column
+            << ") level(" << level << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win2D_LevCub_1_4D(int size, int column, int row,
+                         string game, GameStringList *failures) {
+    ostringstream oss;
+    if (win2D_LevCub_1_4D(size, column, row, game)) {
+        oss << "  PASSED: win2D_LevCub_1_4D; col(" << column
+            << ") row(" << row << ")\n";
+    } else {
+        oss << "FAIL: win2D_LevCub_1_4D; col(" << column
+            << ") row(" << row << ")\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+string test_win2D_LevCub_2_4D(int size, int column, int row,
+                         string game, GameStringList *failures) {
+    ostringstream oss;
+    if (win2D_LevCub_2_4D(size, column, row, game)) {
+        oss << "  PASSED: win2D_LevCub_2_4D; col(" << column
+            << ") row(" << row << ")\n";
+    } else {
+        oss << "FAIL: win2D_LevCub_2_4D; col(" << column
+            << ") row(" << row << ")\n";
         addToGameStringList(failures, game);
         failures->getTail()->setMessage(oss.str());
     }
