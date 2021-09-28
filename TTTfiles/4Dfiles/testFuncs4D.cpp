@@ -60,6 +60,7 @@ GameStringList *test_wins(int size) {
                 }
                 cout << test_win1D_cub_4D(size, num1, num2, num3,
                                            game, failures);
+
             }
 
 /* ============================================================ */
@@ -183,6 +184,7 @@ GameStringList *test_wins(int size) {
             }
             cout << test_win2D_LevCub_2_4D(size, num1, num2,
                                            game, failures);
+
         }
 
 /* ============================================================ */
@@ -348,6 +350,81 @@ GameStringList *test_wins(int size) {
                                            game, failures);
 
     }
+
+/* ============================================================ */
+
+    // testing win4D_1_4D
+    game = newGame_string_4D(size);
+    for (int num4 = 0; num4 < size; num4++) {
+        game[(num4 * pow(size, 3))
+              + (num4 * pow(size, 2))
+              + (num4 * size) + num4] = 'x';
+    }
+    cout << test_win4D_1_4D(size, game, failures);
+
+    // testing win4D_2_4D
+    game = newGame_string_4D(size);
+    for (int num4 = 0; num4 < size; num4++) {
+        game[(num4 * pow(size, 3))
+              + (num4 * pow(size, 2))
+              + (num4 * size) + (size - 1 - num4)] = 'x';
+    }
+    cout << test_win4D_2_4D(size, game, failures);
+
+    // testing win4D_3_4D
+    game = newGame_string_4D(size);
+    for (int num4 = 0; num4 < size; num4++) {
+        game[(num4 * pow(size, 3))
+              + (num4 * pow(size, 2))
+              + ((size - 1 - num4) * size) + num4] = 'x';
+    }
+    cout << test_win4D_3_4D(size, game, failures);
+
+    // testing win4D_4_4D
+    game = newGame_string_4D(size);
+    for (int num4 = 0; num4 < size; num4++) {
+        game[(num4 * pow(size, 3))
+              + ((size - 1 - num4) * pow(size, 2))
+              + (num4 * size) + num4] = 'x';
+    }
+    cout << test_win4D_4_4D(size, game, failures);
+
+    // testing win4D_5_4D
+    game = newGame_string_4D(size);
+    for (int num4 = 0; num4 < size; num4++) {
+        game[((size - 1 - num4) * pow(size, 3))
+              + (num4 * pow(size, 2))
+              + (num4 * size) + num4] = 'x';
+    }
+    cout << test_win4D_5_4D(size, game, failures);
+
+    // testing win4D_6_4D
+    game = newGame_string_4D(size);
+    for (int num4 = 0; num4 < size; num4++) {
+        game[((size - 1 - num4) * pow(size, 3))
+              + (num4 * pow(size, 2))
+              + (num4 * size) + (size - 1 - num4)] = 'x';
+    }
+    cout << test_win4D_6_4D(size, game, failures);
+
+    // testing win4D_7_4D
+    game = newGame_string_4D(size);
+    for (int num4 = 0; num4 < size; num4++) {
+        game[((size - 1 - num4) * pow(size, 3))
+              + (num4 * pow(size, 2))
+              + ((size - 1 - num4) * size) + num4] = 'x';
+    }
+    cout << test_win4D_7_4D(size, game, failures);
+
+    // testing win4D_8_4D
+    game = newGame_string_4D(size);
+    for (int num4 = 0; num4 < size; num4++) {
+        game[((size - 1 - num4) * pow(size, 3))
+              + ((size - 1 - num4) * pow(size, 2))
+              + (num4 * size) + num4] = 'x';
+    }
+    cout << test_win4D_8_4D(size, game, failures);
+
     return failures;
 }
 
@@ -838,3 +915,112 @@ string test_win3D_RowLevCub_4_4D(int size, int column, string game,
     }
     return oss.str();
 }
+
+/* ============================================================ */
+
+/* ============================================================ */
+
+string test_win4D_1_4D(int size, string game,
+                        GameStringList *failures) {
+    ostringstream oss;
+    if (win4D_1_4D(size, game)) {
+        oss << "  PASSED: win4D_1_4D\n";
+    } else {
+        oss << "FAIL: win4D_1_4D\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+
+string test_win4D_2_4D(int size, string game,
+                        GameStringList *failures) {
+    ostringstream oss;
+    if (win4D_2_4D(size, game)) {
+        oss << "  PASSED: win4D_2_4D\n";
+    } else {
+        oss << "FAIL: win4D_2_4D\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+
+string test_win4D_3_4D(int size, string game,
+                        GameStringList *failures) {
+    ostringstream oss;
+    if (win4D_3_4D(size, game)) {
+        oss << "  PASSED: win4D_3_4D\n";
+    } else {
+        oss << "FAIL: win4D_3_4D\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+
+string test_win4D_4_4D(int size, string game,
+                        GameStringList *failures) {
+    ostringstream oss;
+    if (win4D_4_4D(size, game)) {
+        oss << "  PASSED: win4D_4_4D\n";
+    } else {
+        oss << "FAIL: win4D_4_4D\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+
+string test_win4D_5_4D(int size, string game,
+                        GameStringList *failures) {
+    ostringstream oss;
+    if (win4D_5_4D(size, game)) {
+        oss << "  PASSED: win4D_5_4D\n";
+    } else {
+        oss << "FAIL: win4D_5_4D\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+
+string test_win4D_6_4D(int size, string game,
+                        GameStringList *failures) {
+    ostringstream oss;
+    if (win4D_6_4D(size, game)) {
+        oss << "  PASSED: win4D_6_4D\n";
+    } else {
+        oss << "FAIL: win4D_6_4D\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+
+string test_win4D_7_4D(int size, string game,
+                        GameStringList *failures) {
+    ostringstream oss;
+    if (win4D_7_4D(size, game)) {
+        oss << "  PASSED: win4D_7_4D\n";
+    } else {
+        oss << "FAIL: win4D_7_4D\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+
+string test_win4D_8_4D(int size, string game,
+                        GameStringList *failures) {
+    ostringstream oss;
+    if (win4D_8_4D(size, game)) {
+        oss << "  PASSED: win4D_8_4D\n";
+    } else {
+        oss << "FAIL: win4D_8_4D\n";
+        addToGameStringList(failures, game);
+        failures->getTail()->setMessage(oss.str());
+    }
+    return oss.str();
+}
+

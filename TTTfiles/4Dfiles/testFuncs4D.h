@@ -75,4 +75,22 @@ std::string test_win3D_RowLevCub_3_4D(int size, int column,
 std::string test_win3D_RowLevCub_4_4D(int size, int column,
                          std::string game, GameStringList *failures);
 
+
+std::string test_win4D_1_4D(int size, std::string game,
+                         GameStringList *failures);
+std::string test_win4D_2_4D(int size, std::string game,
+                         GameStringList *failures);
+std::string test_win4D_3_4D(int size, std::string game,
+                         GameStringList *failures);
+std::string test_win4D_4_4D(int size, std::string game,
+                         GameStringList *failures);
+std::string test_win4D_5_4D(int size, std::string game,
+                         GameStringList *failures);
+std::string test_win4D_6_4D(int size, std::string game,
+                         GameStringList *failures);
+std::string test_win4D_7_4D(int size, std::string game,
+                         GameStringList *failures);
+std::string test_win4D_8_4D(int size, std::string game,
+                         GameStringList *failures);
+
 #endif // TESTFUNCS4D_H
