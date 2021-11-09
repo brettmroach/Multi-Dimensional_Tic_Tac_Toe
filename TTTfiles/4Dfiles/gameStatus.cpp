@@ -3,7 +3,7 @@
 #include <iostream>
 #include "gameStatus.h"
 #include "winDetection.h"
-//#include "drawDetection.h"
+#include "drawDetection.h"
 
 using namespace std;
 
@@ -23,7 +23,6 @@ string gameStatus_4D(int size, string game) {
 }
 */
 
-// TODO
 bool detectWin_4D(int size, string game) {
     for (int num1 = 0; num1 < size; num1++) {
         for (int num2 = 0; num2 < size; num2++) {
@@ -57,51 +56,6 @@ bool detectWin_4D(int size, string game) {
     }
 }
 
-
-/* TODO 
-bool detectDraw_4D(int size, string game) {
-    // test to see if a win is still possible in any row or column in each level
-    for (int num1 = 0; num1 < size; num1++) {
-        for (int num2 = 0; num2 < size; num2++) {
-            if (rowPossible(size, num1, num2, game)) {
-                return false;
-            } else if (columnPossible(size, num1, num2, game)) {
-                return false;
-            } else if (vertPossible(size, num1, num2, game)) {
-                return false;
-            } else {
-                continue;
-            }
-        }
-        // test the diagonals across each 2D space by level, row, and column
-        if (lDiagPossible_1(size, num1, game)) {
-            return false;
-        } else if (lDiagPossible_2(size, num1, game)) {
-            return false;
-        } else if (rDiagPossible_1(size, num1, game)) {
-            return false;
-        } else if (rDiagPossible_2(size, num1, game)) {
-            return false;
-        } else if (cDiagPossible_1(size, num1, game)) {
-            return false;
-        } else if (cDiagPossible_2(size, num1, game)) {
-            return false;
-        } else continue;
-    }
-    // test the 3D diagonals for a possible win remaining
-    if (diagPossible3D_1(size, game)) {
-        return false;
-    } else if (diagPossible3D_2(size, game)) {
-        return false;
-    } else if (diagPossible3D_3(size, game)) {
-        return false;
-    } else if (diagPossible3D_4(size, game)) {
-        return false;
-    } else {
-        return true;
-    }
-}
- */
 
 bool win1D(int size, int num1, int num2, int num3, string game) {
     // row(num1), level(num2), cube(num3)
@@ -336,6 +290,42 @@ bool win4D(int size, string game) {
         return true;
     }
     return false;
+}
+
+
+bool detectDraw_4D(int size, string game) {
+    // test to see if a win is still possible in any row or column
+    // in each level
+    for (int num1 = 0; num1 < size; num1++) {
+        for (int num2 = 0; num2 < size; num2++) {
+            for (int num3 = 0; num3 < size; num3++) {
+                // test for possible 1D wins
+                if (possible1D(size, num1, num2, num3, game)) {
+                    return true;
+                } else {
+                    continue;
+                }
+            }
+            // test for possible 2D wins
+            if (possible2D(size, num1, num2, game)) {
+                return true;
+            } else {
+                continue;
+            }
+        }
+        // test for possible 3D wins
+        if (possible3D(size, num1, game)) {
+            return true;
+        } else {
+            continue;
+        }
+    }
+    // test for possible 4D wins
+    if (possible4D(size, game)) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 
